@@ -1,5 +1,6 @@
 public class Formatter {
     static String formatter (double rubles) {
+        //3. Вывод суммы, которую должен заплатить каждый человек, должен быть в формате "10.45". Дробная часть не должна содержать больше двух чисел после запятой.
         return String.format ("%.2f", rubles) + " " + getRubleAddition ((int) rubles);
     }
 
@@ -11,8 +12,8 @@ public class Formatter {
             return "рублей";
         }
         return switch (num % 10) {
-            case 1 -> "рубль";
-            case 2, 3, 4 -> "рубля";
+            case 1 -> "рубль ";
+            case 2, 3, 4 -> "рубля ";
             default -> "рублей";
         };
     }

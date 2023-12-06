@@ -1,3 +1,5 @@
+import static java.lang.Math.round;
+
 public class Tovar {
     String name;
     double price;
@@ -5,7 +7,9 @@ public class Tovar {
 
     Tovar (String _name, double _price) {
         name = _name;
-        price = _price;
+        //Оставляем 2 знака после запятой во избежание дальнейшей путаницы
+        //price = ((double)((int)(_price*100)))/100;
+        price = round(_price * 100.0)/100.0;
         next = null;
     }
     void attach (Tovar _next) {
@@ -15,14 +19,23 @@ public class Tovar {
         t.next = _next;
     }
 
-    void print () {
-        System.out.printf ("%s, \t%s\n", name, Formatter.formatter(price));
+    public void print () {
+        print (0);
     }
-    void printAll () {
+    public void print (int lineNumber) {
+        //String _name = String.padLeft (name, 50);
+        if (lineNumber < 1) {
+            System.out.printf("%30s, %19s\n", name, Formatter.formatter(price));
+        } else {
+            System.out.printf("%d) %20s, %19s\n", lineNumber, name, Formatter.formatter(price));
+        }
+    }
+    public void printAll () {
+        int lineNumber = 1;
         System.out.println ("Добавленные товары:");
         Tovar it = this;
         do {
-            it.print ();
+            it.print (lineNumber++);
             it = it.next;
         } while (it != null);
     }
