@@ -24,7 +24,7 @@ public class Main {
 
         //*** 2. Добавление товаров в калькулятор
         Tovar firstTovar = null;
-        Tovar  nextTovar = null;
+        Tovar  nextTovar;
         do {
             //System.out.println ("Название товара (или слово \"Завершить\"):");
             //1. Запросите у пользователя название товара и его стоимость. Стоимость должна быть в формате рубли.копейки, например 10.45 или 11.40.
@@ -35,8 +35,8 @@ public class Main {
             System.out.printf ("Введено название: %s\n", name);
             //if (name.equalsIgnoreCase("Завершить")) break;
 
-            Double price;
-            Double ourMagicValue = -3.1415962;
+            double price;
+            double ourMagicValue = -3.1415962;
             do {
                 System.out.print("Cтоимость товара: ");
                 /*price = scanner.nextDouble();
