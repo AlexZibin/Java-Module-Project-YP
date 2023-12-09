@@ -1,19 +1,20 @@
-import static java.lang.Math.round;
+//import static java.lang.Math.round; - округление перенесено в main
 
-public class Tovar {
+// Рефакторинг после замечания:
+// Старайся называть классы и переменные на английском языке, а не просто транслитом
+// Tovar -> Dish
+public class Dish {
     String name;
     double price;
-    Tovar next;
+    Dish next;
 
-    Tovar (String _name, double _price) {
+    Dish(String _name, double _price) {
         name = _name;
-        //Оставляем 2 знака после запятой во избежание дальнейшей путаницы
-        //price = ((double)((int)(_price*100)))/100;
-        price = round(_price * 100.0)/100.0;
+        price = _price;
         next = null;
     }
-    void attach (Tovar _next) {
-        Tovar t = this;
+    void attach (Dish _next) {
+        Dish t = this;
 
         while (t.next != null) t = t.next;
         t.next = _next;
@@ -32,8 +33,8 @@ public class Tovar {
     }
     public void printAll () {
         int lineNumber = 1;
-        System.out.println ("Добавленные товары:");
-        Tovar it = this;
+        System.out.println ("\nДобавленные товары:");
+        Dish it = this;
         do {
             it.print (lineNumber++);
             it = it.next;
